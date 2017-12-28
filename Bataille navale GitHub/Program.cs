@@ -58,55 +58,57 @@ namespace Bataille_navale_GitHub
                     }
                     while (convenir == "n");
                     PlacerBateaux(grilleOrdi, nbLignes, nbColonnes, bateauxOrdi);
+                    Console.WriteLine("Voici respectivement la grille d'attaque des bateaux de l'adversaire et la grille de vos bateaux: ");
+                    AfficherDeuxGrilles(grilleJoueur, grilleAttaque, nbLignes, nbColonnes);
                 }
 
                 int compteur = 0;
                 bool resultatPartie = false;
                 string choix;
-                int joueur1;
-                int joueur2;
+                int joueur;
+                int ordinateur;
                 Console.Write("Souhaitez-vous commencer ? (o/n) ");
                 choix = Console.ReadLine();
                 if (choix == "o")
                 {
-                    joueur1 = 0;
-                    joueur2 = 1;
+                    joueur = 0;
+                    ordinateur = 1;
                 }
                 else
                 {
-                    joueur2 = 0;
-                    joueur1 = 1;
+                    ordinateur = 0;
+                    joueur = 1;
                 }
                 Console.WriteLine("---------------------------------------------------------------------------------------------------------------");
                 do
                 {
-                    if (compteur % 2 == 0 && joueur1 == 0) //si joueur1 = 0, le joueur commence
+                    if (compteur % 2 == 0 && joueur == 0) //si joueur = 0, le joueur commence
                     {
                         Console.WriteLine("C'est à vous de jouer!");
-                        AfficherDeuxGrilles(grilleJoueur, grilleAttaque, nbLignes, nbColonnes);
                         resultatPartie = JouerJoueur(grilleOrdi, grilleAttaque, nbLignes, nbColonnes, bateauxOrdi);
+                        AfficherDeuxGrilles(grilleJoueur, grilleAttaque, nbLignes, nbColonnes);
                     }
                     else
                     {
-                        if (compteur % 2 == 0 && joueur2 == 0)
+                        if (compteur % 2 == 0 && ordinateur == 0) //si ordinateur = 0, l'ordinateur commence
                         {
-                            Console.WriteLine("L'ordinateur joue...");
+                            Console.Write("L'ordinateur joue...");
                             resultatPartie = JouerOrdi(grilleJoueur, nbLignes, nbColonnes, bateauxJoueur);
-                            AfficherDeuxGrilles(grilleJoueur, grilleOrdi, nbLignes, nbColonnes);
+                            AfficherDeuxGrilles(grilleJoueur, grilleAttaque, nbLignes, nbColonnes);
                         }
                         else
                         {
-                            if (compteur % 2 == 1 && joueur1 == 1)
+                            if (compteur % 2 == 1 && joueur == 1)
                             {
                                 Console.WriteLine("C'est à vous de jouer!");
-                                AfficherDeuxGrilles(grilleJoueur, grilleAttaque, nbLignes, nbColonnes);
                                 resultatPartie = JouerJoueur(grilleOrdi, grilleAttaque, nbLignes, nbColonnes, bateauxOrdi);
+                                AfficherDeuxGrilles(grilleJoueur, grilleAttaque, nbLignes, nbColonnes);
                             }
                             else
                             {
-                                Console.WriteLine("L'ordinateur joue...");
+                                Console.Write("L'ordinateur joue...");
                                 resultatPartie = JouerOrdi(grilleJoueur, nbLignes, nbColonnes, bateauxJoueur);
-                                AfficherDeuxGrilles(grilleJoueur, grilleOrdi, nbLignes, nbColonnes);
+                                AfficherDeuxGrilles(grilleJoueur, grilleAttaque, nbLignes, nbColonnes);
                             }
                         }
                     }
@@ -129,9 +131,9 @@ namespace Bataille_navale_GitHub
             Console.ReadKey();
         }
         static string[,] InitialiserGrille(int nbLignes, int nbColonnes)
-        //arguments: nbLignes entier naturel, nbColonnes entier naturel
-        //sortie: grille navale vide
         {
+            //arguments: nbLignes entier naturel, nbColonnes entier naturel
+            //sortie: grille navale vide
             string[,] grille = new string[2 * nbLignes + 1, nbColonnes + 1];
             string empty = "   |";
             string bordure = "---+";
@@ -169,7 +171,6 @@ namespace Bataille_navale_GitHub
             }
             return grille;
         }
-
         static void AfficherGrille(string[,] grille, int nbLignes, int nbColonnes)
         {
             //sortie: affiche la grille
@@ -295,7 +296,7 @@ namespace Bataille_navale_GitHub
             Console.Write("Choissisez la cellule où tirer: ");
             int[] cellule = StringToInt(Console.ReadLine());
             int ligne = 2 * cellule[1] - 1; //pour avoir la ligne de la grille
-            int colonne = cellule[0] - 64;
+            int colonne = cellule[0] - 64; //conversion pour la table ASCII
             string empty = "   |";
             while (grilleOrdi[ligne, colonne] == " * |" || grilleOrdi[ligne, colonne] == " O |")
             {
@@ -332,26 +333,27 @@ namespace Bataille_navale_GitHub
         {
             Random rnd = new Random();
             bool res = false;
-            int ligne = 2 * rnd.Next(1, 11) - 1;
+            int ligne = rnd.Next(1, 11);
+            int ligneGrille = 2 * ligne - 1;
             int colonne = rnd.Next(1, 11);
             string empty = "   |";
-            while (grilleJoueur[ligne, colonne] == " * |" || grilleJoueur[ligne, colonne] == " O |")
+            while (grilleJoueur[ligneGrille, colonne] == " * |" || grilleJoueur[ligneGrille, colonne] == " O |")
             {
                 Console.Write("Déjà tenté! Choisissez une nouvelle cellule : ");
-                ligne = 2 * rnd.Next(1, 11) - 1;
+                ligneGrille = 2 * rnd.Next(1, 11) - 1;
                 colonne = rnd.Next(1, 11);
             }
-
-            if (grilleJoueur[ligne, colonne] == empty)
+            Console.WriteLine(" cellule {0}{1}", IntToChar(colonne), ligne);
+            if (grilleJoueur[ligneGrille, colonne] == empty)
             {
-                grilleJoueur[ligne, colonne] = " * |";
+                grilleJoueur[ligneGrille, colonne] = " * |";
                 Console.WriteLine("A l'eau !!!");
             }
             else
             {
-                grilleJoueur[ligne, colonne] = " O |";
+                grilleJoueur[ligneGrille, colonne] = " O |";
                 Console.WriteLine("Touché !!!");
-                if (Coule(grilleJoueur, ligne, colonne, bateauxJoueur) == true)
+                if (Coule(grilleJoueur, ligneGrille, colonne, bateauxJoueur) == true)
                 {
                     Console.WriteLine("Bateau coulé!");
                     if (PartieGagnee(grilleJoueur, nbLignes, nbColonnes, bateauxJoueur) == true)
@@ -377,6 +379,11 @@ namespace Bataille_navale_GitHub
                 cellule[1] = (int)Char.GetNumericValue(caractere[1]);
             }
             return cellule;
+        }
+        static char IntToChar(int num)
+        {
+            char[] alphabet = new char[10] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J' };
+            return alphabet[num - 1];
         }
         static bool Coule(string[,] grille, int ligne, int colonne, int[][] bateaux)
         {
