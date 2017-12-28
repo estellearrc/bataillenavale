@@ -1,0 +1,7 @@
+C:\Users\Estelle\Documents\GitHub\bataillenavale\Bataille navale GitHub\bin\Debug\Bataille navale GitHub.exe.config
+C:\Users\Estelle\Documents\GitHub\bataillenavale\Bataille navale GitHub\bin\Debug\Bataille navale GitHub.exe
+C:\Users\Estelle\Documents\GitHub\bataillenavale\Bataille navale GitHub\bin\Debug\Bataille navale GitHub.pdb
+C:\Users\Estelle\Documents\GitHub\bataillenavale\Bataille navale GitHub\obj\Debug\Bataille navale GitHub.csprojResolveAssemblyReference.cache
+C:\Users\Estelle\Documents\GitHub\bataillenavale\Bataille navale GitHub\obj\Debug\Bataille navale GitHub.csproj.CoreCompileInputs.cache
+C:\Users\Estelle\Documents\GitHub\bataillenavale\Bataille navale GitHub\obj\Debug\Bataille navale GitHub.exe
+C:\Users\Estelle\Documents\GitHub\bataillenavale\Bataille navale GitHub\obj\Debug\Bataille navale GitHub.pdb
