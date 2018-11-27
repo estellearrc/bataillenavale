@@ -26,6 +26,8 @@ namespace Bataille_navale_GitHub
             for (int i = 0; i < 5; i++)
             {
                 bateauxOrdi[i] = new int[4];
+
+
             }
             string chemin = "C:\\Users\\Estelle\\Documents\\GitHub\\bataillenavale\\sauvegarde_partie_github.txt";
             do

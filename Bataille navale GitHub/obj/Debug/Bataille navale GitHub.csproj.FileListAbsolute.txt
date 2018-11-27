@@ -5,3 +5,6 @@ C:\Users\Estelle\Documents\GitHub\bataillenavale\Bataille navale GitHub\obj\Debu
 C:\Users\Estelle\Documents\GitHub\bataillenavale\Bataille navale GitHub\obj\Debug\Bataille navale GitHub.csproj.CoreCompileInputs.cache
 C:\Users\Estelle\Documents\GitHub\bataillenavale\Bataille navale GitHub\obj\Debug\Bataille navale GitHub.exe
 C:\Users\Estelle\Documents\GitHub\bataillenavale\Bataille navale GitHub\obj\Debug\Bataille navale GitHub.pdb
+H:\IHS Secours\bataillenavale\Bataille navale GitHub\bin\Debug\Bataille navale GitHub.exe.config
+H:\IHS Secours\bataillenavale\Bataille navale GitHub\obj\Debug\Bataille navale GitHub.exe
+H:\IHS Secours\bataillenavale\Bataille navale GitHub\obj\Debug\Bataille navale GitHub.pdb
